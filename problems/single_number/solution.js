@@ -3,9 +3,9 @@
  * @return {number}
  */
 var singleNumber = function(nums) {
-    let singleNumber =0;
-    for(i of nums){
-        singleNumber ^= i;
+    let singleNum = 0;
+    for (num of nums){
+        singleNum ^= num;
     }
-    return singleNumber
+    return singleNum;
 };
