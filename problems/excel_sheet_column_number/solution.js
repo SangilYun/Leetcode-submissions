@@ -3,10 +3,11 @@
  * @return {number}
  */
 var titleToNumber = function(s) {
-    let number=0;
-    for(let i=0; i<s.length; i++){
-        let place = s.length-1-i;
-            number+= (Math.pow(26,place)*(s.charCodeAt(i)-64));
+    let capitalized = s.toUpperCase();
+    let sum =0;
+    for(let i=s.length-1; i>=0; i--){
+        let calibrated = capitalized[i].charCodeAt() - 64;
+        sum += Math.pow(26, s.length-1 - i) * calibrated;
     }
-    return number;
+    return sum
 };
