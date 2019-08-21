@@ -7,24 +7,14 @@
  */
 /**
  * @param {ListNode} node
- * @param {number} n
  * @return {void} Do not return anything, modify node in-place instead.
  */
-var deleteNode = function(node, n) {
-    if(node.val ===n){
-        node.val = node.next.val
-        node.next = node.next.next
+var deleteNode = function(node) {
+    let nextNode = node.next;
+    node.val = nextNode.val;
+    node.next = nextNode.next;
+    while(nextNode.next){
+        nextNode = nextNode.next;
     }
-    
-    let prevNode = node;
-    let currNode = node.next;
-
-    while(currNode){
-        if(currNode.val === n){
-            prevNode.next = currNode.next
-            return;
-        }
-        prevNode = currNode;
-        currNode = currNode.next;
-    }
+    nextNode.next = null;
 };
