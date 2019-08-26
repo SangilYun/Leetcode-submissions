@@ -3,18 +3,15 @@
  * @return {boolean}
  */
 var isHappy = function(n) {
-    let input =n;
-    let seen = new Set();
-    while(input!==1 ){
-        let arr = [...""+input];
-        let sum = arr.reduce( (acc, curr) => acc+Math.pow(Number(curr),2), 0);
-        input = sum;
-        
-        if(seen.has(input)){
-            return false;
+    let set = new Set();
+    while(true){
+        let sum =0;
+        for(let char of n.toString()){
+            sum += char*char;    
         }
-        
-        seen.add(input)
+        if(sum === 1) return true;
+        if(set.has(sum)) return false;
+        set.add(sum);
+        n = sum;
     }
-    return true;
 };
