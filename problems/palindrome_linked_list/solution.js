@@ -10,31 +10,34 @@
  * @return {boolean}
  */
 var isPalindrome = function(head) {
-    if(!head) return true;
+    //find the middle node
     let slow = head;
-    let fast = head.next;
-    while(fast!==null && fast.next){
+    let fast = head;
+    while(fast!==null && fast.next !== null){
         slow = slow.next;
         fast = fast.next.next;
     }
     
-    let reversed = reverseList(slow);
-    while(head){
+    //odd length
+    if(fast) fast = fast.next;
+    let reversed = reverse(slow);
+    
+    while(reversed){
         if(head.val !== reversed.val) return false;
         head = head.next;
-        reversed=reversed.next;
+        reversed = reversed.next;
     }
+    
     return true;
 };
 
-var reverseList = function(head) {
-    var pre = null;
-    var next = null;
-    while(head != null) {
-        next = head.next;
-        head.next = pre;
-        pre = head;
-        head = next;
+function reverse(head){
+    let prev, curr=head, next
+    while(curr){
+        next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = next;  
     }
-    return pre;
-};
+    return prev;
+}
