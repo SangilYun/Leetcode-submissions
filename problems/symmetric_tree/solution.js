@@ -10,13 +10,11 @@
  * @return {boolean}
  */
 var isSymmetric = function(root) {
-    return isMirror(root, root);
+    return helper(root, root);
 };
 
-const isMirror = (lRoot, rRoot) =>{
-    if(!lRoot && !rRoot) return true;
-    if(!lRoot|| !rRoot) return false;
-    return lRoot.val === rRoot.val 
-        && isMirror(lRoot.right, rRoot.left)
-        && isMirror(lRoot.left, rRoot.right);
+function helper(lRoot, rRoot){
+    if(!lRoot&&!rRoot) return true;
+    if(!lRoot||!rRoot) return false;
+    return helper(lRoot.right, rRoot.left) && helper(lRoot.left, rRoot.right) && lRoot.val === rRoot.val;
 }
