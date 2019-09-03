@@ -15,12 +15,17 @@ var levelOrder = function(root) {
     return lists;
 };
 
-function helper(root, lists, level){
+function helper(root, lists, depth){
     if(!root) return null;
     let list = [];
-    if(lists.length === level) lists.push(list);
-    else list = lists[level];
+    if(lists.length === depth){
+        lists.push(list);
+    }else{
+        list = lists[depth];
+    }
     list.push(root.val);
-    helper(root.left, lists, level+1);
-    helper(root.right, lists, level+1);
+    helper(root.left, lists, depth+1);
+    helper(root.right, lists, depth+1);
 }
+
+
