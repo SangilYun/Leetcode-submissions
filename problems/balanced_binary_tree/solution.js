@@ -11,11 +11,12 @@
  */
 var isBalanced = function(root) {
     if(!root) return true;
-    let height = helper(root.left) - helper(root.right);
-    return Math.abs(height) >1 ? false : isBalanced(root.left) && isBalanced(root.right);
+    let height = Math.abs(helper(root.left) - helper(root.right));
+    return height >1 ? false : isBalanced(root.left) && isBalanced(root.right);
+    
 };
 
-function helper(root){
+var helper = function(root){
     if(!root) return 0;
-    return Math.max(helper(root.left), helper(root.right)) +1;
+    return Math.max(helper(root.right), helper(root.left)) + 1; 
 }
