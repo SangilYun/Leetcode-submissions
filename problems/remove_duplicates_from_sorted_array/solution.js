@@ -3,11 +3,11 @@
  * @return {number}
  */
 var removeDuplicates = function(nums) {
-    let index=1;
+    let pointer = 0;
     for(let i=0; i<nums.length; i++){
-        if(nums[index-1] < nums[i]){
-            nums[index++] = nums[i];
+        if(nums[i] !== nums[i+1]) {
+            nums[++pointer] = nums[i+1]
         }
     }
-    return index; 
+    return pointer;
 };
