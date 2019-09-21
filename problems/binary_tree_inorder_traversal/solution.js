@@ -10,14 +10,29 @@
  * @return {number[]}
  */
 var inorderTraversal = function(root) {
-    let arr = [];
-    helper(root, arr)
-    return arr;
+//     let stack =[];
+//     let result = [];
+    
+//     while(root || stack.length){
+//         if(root){
+//             stack.push(root);
+//             root = root.left;
+//         }else{
+//             root = stack.pop();
+//             result.push(root.val);
+//             root= root.right;
+//         }
+//     }
+//     return result;
+    let answer = [];
+    helper(root,answer);
+    return answer;
+    
 };
 
-const helper =(root, arr)=>{
-    if(!root) return arr;
-    if(root.left) helper(root.left, arr);
-    if(root.val) arr.push(root.val);
-    if(root.right) helper(root.right, arr);   
+function helper(root, answer){
+    if(!root) return null;
+    helper(root.left, answer);
+    answer.push(root.val);
+    helper(root.right, answer);
 }
