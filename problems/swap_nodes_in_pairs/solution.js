@@ -11,8 +11,9 @@
  */
 var swapPairs = function(head) {
     if(!head || !head.next) return head;
-    let n =head.next;
+    let n = head.next;
     head.next = swapPairs(head.next.next);
     n.next = head;
     return n;
+    
 };
