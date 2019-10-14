@@ -3,17 +3,24 @@
  * @return {number[][]}
  */
 var generate = function(numRows) {
-    let pascal = [];
-    for(let i=0; i<numRows; i++){
-        pascal.push([]);
-        for(let j=0; j<=i; j++){
-            if(j===0 || j ===i){
-                pascal[i][j] = 1;
-            }else{
-                pascal[i][j] = pascal[i-1][j-1] + pascal[i-1][j];
-            }
-        }
-    }
-    
-    return pascal;
+    let result = [];    
+    helper(numRows, result);
+    return result;
 };
+
+
+
+function helper(numRows, result){
+    if(numRows === 1) result.push([1]);
+    else if(numRows >1){
+        helper(numRows-1, result);
+        let prev = result[numRows-2];
+        let arr = [];
+        for(let i=0; i<prev.length; i++){
+            if(i ===0) arr.push(1);
+            if(i>0)arr.push(prev[i-1] + prev[i]);
+            if(i === prev.length-1) arr.push(1);
+        }
+        result.push(arr);
+    }
+}
