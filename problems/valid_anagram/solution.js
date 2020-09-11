@@ -4,17 +4,24 @@
  * @return {boolean}
  */
 var isAnagram = function(s, t) {
-    if(s.length!==t.length) return false;
-    let table = new Array(26).fill(0);
-    const offset = 'a'.charCodeAt();
-    for(let i=0; i<s.length; i++){
-        let sIndex = s[i].charCodeAt() - offset;
-        let tIndex = t[i].charCodeAt() - offset;
-        table[sIndex] += 1;
-        table[tIndex] -= 1;
+    if(s.length!==t.length){
+        return false;
     }
-
-    return table.filter(each => each!==0).length>0 ? false:true;
-    
-    
+    const map = new Map();
+    for(let i=0; i<s.length; i++){
+        const plus= s[i];
+        const minus = t[i];
+        if(map.has(plus)){
+            map.set(plus, map.get(plus)+1);
+        }else{
+            map.set(plus, 1);
+        }
+        
+        if(map.has(minus)){
+            map.set(minus, map.get(minus)-1);
+        }else{
+            map.set(minus,-1);
+        }
+    }
+    return [...map.values()].filter(value=>value!==0).length ===0 ? true : false
 };
