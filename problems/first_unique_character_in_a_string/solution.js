@@ -3,13 +3,20 @@
  * @return {number}
  */
 var firstUniqChar = function(s) {
-    let map = new Map();
-    for(let each of s){
-        map.has(each) ? map.set(each, 2) : map.set(each,1)
+    const map = new Map();
+    for(let i=0; i<s.length; i++){
+        if(map.has(s[i])){
+            map.set(s[i], map.get(s[i])+1);
+        }else{
+            map.set(s[i], 1);
+        }
     }
     
     for(let i=0; i<s.length; i++){
-        if(map.get(s[i])===1) return i;
+        if(map.get(s[i]) === 1){
+            return i;
+        }
     }
-    return -1;
+    return -1
+    
 };
