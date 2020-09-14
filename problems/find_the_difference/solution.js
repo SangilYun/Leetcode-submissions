@@ -13,17 +13,10 @@ var findTheDifference = function(s, t) {
     }
     
     for(let i=0; i<t.length; i++){
-        if(map.has(t[i])){
-            map.set(t[i], map.get(t[i]) -1); 
-        }else{
+        if(!map.has(t[i]) || map.get(t[i]) === 0){
             return t[i]
+        }else{
+            map.set(t[i], map.get(t[i]) -1); 
         }
     }
-    
-    for([key, value] of map.entries()){
-        if(value !==0){
-            return key
-        }
-    }
-        
 };
