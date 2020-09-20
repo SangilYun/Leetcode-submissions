@@ -11,39 +11,14 @@
  * @return {boolean}
  */
 var hasCycle = function(head) {
-    let set = new Set();
-    while(head!==null){
-        if(set.has(head)){
-            return true;
-        }else{
-            set.add(head);
-        }
-        head= head.next;
-    }
-    return false;
-};
-
-
-
-
-
-
-
-
-
-
-/*
-    if(head === null || head.next === null){
+    if(!head?.next){
         return false;
     }
-    let fast = head.next;
-    let slow = head;
-    while(slow !== fast){
-        if(fast === null ||fast.next === null){
-            return false;
-        }
-        slow = slow.next;
-        fast = fast.next.next;
+    let current = head;
+    let runner = head.next.next;
+    while(current !== runner){
+        current = current?.next;
+        runner = runner?.next?.next;
     }
-    return true;
-*/
+    return !!current ;
+};
