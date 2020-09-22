@@ -11,11 +11,9 @@
  * @return {boolean}
  */
 var hasCycle = function(head) {
-    if(!head?.next){
-        return false;
-    }
+
     let current = head;
-    let runner = head.next.next;
+    let runner = head?.next?.next;
     while(current !== runner){
         current = current?.next;
         runner = runner?.next?.next;
