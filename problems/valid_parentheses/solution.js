@@ -3,19 +3,34 @@
  * @return {boolean}
  */
 var isValid = function(s) {
-    if(s.length %2 !==0) return false;
-    let stack = [];
+    if(s.length %2 !== 0){
+        return false;
+    }
+    
+    const stack = [];
     for(let i=0; i<s.length; i++){
-        let each = s[i];
-        if(each ==='(' || each ==='[' || each==='{'){
-            stack.push(each);
+        const char = s[i];
+        if(char === '(' || char ==='[' || char ==='{'){
+            stack.push(char);
         }else{
-            let lastBracket = stack.pop();
-            if(lastBracket ==='(' && each !==')' ||
-              lastBracket ==='{' && each !=='}' ||
-              lastBracket === '[' && each !==']') return false;
+            if(stack.length === 0){
+                return false;
+            }
+            const lastParenthesis = stack.pop();
+            if(lastParenthesis ==='(' && char !==')'){
+                return false;
+            }
+            if(lastParenthesis === '[' && char !==']'){
+                return false;
+            }
+            if(lastParenthesis === '{' && char !=='}'){
+                return false;
+            }
         }
     }
-    if(stack.length !== 0) return false;
+    
+    if(stack.length !== 0){
+        return false;
+    }
     return true;
 };
