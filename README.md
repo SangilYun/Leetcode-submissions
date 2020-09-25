@@ -1,6 +1,6 @@
 # Leetcode-submissions
 
-Upload Leetcode submitssions once a week automatically using github action.
+Upload [Leetcode](https://leetcode.com/) submitssions once a week automatically using github action.
 
 
 source: https://github.com/joshcai/leetcode-sync
