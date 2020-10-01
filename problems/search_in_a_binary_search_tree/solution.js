@@ -24,5 +24,11 @@ const inOrder = (root, val) =>{
         return root;
     }
     
-    return inOrder(root.right, val) || inOrder(root.left, val)
+    if(root.val >= val){
+        return inOrder(root.left, val);
+    }
+    
+    if(root.val < val){
+        return inOrder(root.right, val)
+    }
 }
