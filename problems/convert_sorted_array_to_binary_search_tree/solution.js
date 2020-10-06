@@ -1,8 +1,9 @@
 /**
  * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val;
- *     this.left = this.right = null;
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
  * }
  */
 /**
@@ -10,11 +11,22 @@
  * @return {TreeNode}
  */
 var sortedArrayToBST = function(nums) {
-    if(!nums.length) return null;
-    let m = Math.floor(nums.length/2);
-    let root = new TreeNode(nums[m]);
-    root.left = sortedArrayToBST(nums.slice(0, m));
-    root.right = sortedArrayToBST(nums.slice(m+1));
-    return root;
+    if(!nums.length){
+        return null;
+    }
+
+    return traversal(nums, 0, nums.length-1);
     
 };
+
+const traversal = (nums, startIndex, endIndex)=>{
+    if(startIndex > endIndex){
+        return null;
+    }
+    const middleIndex = Math.ceil((startIndex+endIndex)/2);
+    const root = new TreeNode(nums[middleIndex]);
+    root.right = traversal(nums, middleIndex+1, endIndex);
+    root.left = traversal(nums, startIndex, middleIndex-1);
+    
+    return root;
+}
