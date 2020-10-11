@@ -29,7 +29,10 @@ var levelOrderBottom = function(root) {
                 queue.push(currentNode.right)
             }
         }
-        result.unshift(currentLevel);
+        //inserting a list at the first index will result in shifting every element for every insultion which is not very efficient.
+        // result.unshift(currentLevel);
+        result.push(currentLevel);
     }
-    return result;
+    
+    return result.reverse();
 };
