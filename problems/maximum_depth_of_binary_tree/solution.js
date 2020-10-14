@@ -1,8 +1,9 @@
 /**
  * Definition for a binary tree node.
- * function TreeNode(val) {
- *     this.val = val;
- *     this.left = this.right = null;
+ * function TreeNode(val, left, right) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.left = (left===undefined ? null : left)
+ *     this.right = (right===undefined ? null : right)
  * }
  */
 /**
@@ -10,9 +11,10 @@
  * @return {number}
  */
 var maxDepth = function(root) {
-    //DFS
     if(!root){
         return 0;
     }
-    return 1+Math.max(maxDepth(root.left), maxDepth(root.right))
+    return Math.max(maxDepth(root.left), maxDepth(root.right))+1;
+    
+    
 };
