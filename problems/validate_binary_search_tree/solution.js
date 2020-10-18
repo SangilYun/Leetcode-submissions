@@ -42,17 +42,17 @@ Explanation: The root node's value is 5 but its right child's value is 4.
  * @return {boolean}
  */
 var isValidBST = function(root) {
-    return !isNotBST(root, -Infinity, Infinity)
+    return validateBST(root, -Infinity, Infinity)
 };
 
-const isNotBST = (root, min, max) =>{
+const validateBST = (root, min, max) =>{
     if(!root){
-        return false;
+        return true;
     }
 
     if(min < root.val && root.val < max){
-        return isNotBST(root.left, min, root.val) || isNotBST(root.right, root.val, max)
+        return validateBST(root.left, min, root.val) && validateBST(root.right, root.val, max)
     }
-    return true;
+    return false;
     
 }
