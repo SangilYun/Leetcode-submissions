@@ -40,5 +40,8 @@ const helper = (left, right) =>{
     if(!left || !right){
         return left === right;
     }
-    return left.val === right.val && helper(left.left, right.right) && helper(left.right, right.left);
+    if(left.val !==right.val){
+        return false;
+    }
+    return helper(left.left, right.right) && helper(left.right, right.left);
 }
