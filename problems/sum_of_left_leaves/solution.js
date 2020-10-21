@@ -23,7 +23,7 @@ return 5 (i.e. 2 + 3)
     4    2
    / \ 
   3   9 
-return 3 (i.e. 2 + 3)
+return 3 (i.e. 3)
 */
 
 /**
