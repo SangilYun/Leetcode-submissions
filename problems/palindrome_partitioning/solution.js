@@ -37,3 +37,9 @@ const helper = (str, result, temp, start)=>{
 
     }
 }
+
+/*
+Runtime: O(N * 2N) where N is the number of characters in s. This results from having 2 choices at each of our N positions (i.e. split the string at the current position, or don’t split the string at the current position) and for each of these positions, we do a linear scan of the string to determine whether or not it is a palindrome.
+
+Space complexity: O(2N) where N is the number of characters in s. This results in the worst-case where every possible splitting and not splitting of s results in a palindrome being formed.
+*/
